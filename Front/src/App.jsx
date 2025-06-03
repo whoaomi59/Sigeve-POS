@@ -1,3 +1,4 @@
+import { CupSoda } from "lucide-react";
 import "./App.css";
 import Container from "./components/layouts/container";
 
@@ -9,11 +10,7 @@ function App() {
         Sistema POS venta y inventario.
       </p>
       <div className="flexx">
-        <img
-          src="/img/Baner/Baner 1.png"
-          alt="Baners"
-          className="w-150 h-130"
-        />
+        <CupSoda className="text-gray-300 w-50 h-50 mt-5" />
       </div>
     </Container>
   );

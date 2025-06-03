@@ -35,23 +35,26 @@ export const RutasGestion = [
   {
     id: 1,
     name: "Informes o Reportes",
+    icon: "ChartColumn",
     path: "/informes",
   },
   {
     id: 2,
     name: "Gastos",
+    icon: "ChartColumnDecreasing",
     path: "/gastos",
   },
 
   {
     id: 3,
     name: "Usuarios",
-    icon: "UserRoundCog",
+    icon: "UsersRound",
     path: "/usuario",
   },
   {
     id: 4,
     name: "Empresa",
+    icon: "HousePlug",
     path: "/empresa",
   },
 ];
