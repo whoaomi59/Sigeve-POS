@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body{
+    background-color: #F9FAF8;
+}
+
 .flexx{
     display: flex;
     align-items: center;
