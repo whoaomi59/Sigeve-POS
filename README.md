@@ -4,8 +4,8 @@ Sistema POS venta y inventario.
 
 <div>
    <img
-          src="/img/Baner/Baner 1.png"
+          src="./Front/public/img/Logos/logo 1.png"
           alt="Baners"
           className="w-150 h-120"
-        />
+        >
 </div>
