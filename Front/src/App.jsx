@@ -11,7 +11,7 @@ function App() {
         <img
           src="/img/Baner/Baner 1.png"
           alt="Baners"
-          className="w-150 h-120"
+          className="w-150 h-130"
         />
       </div>
     </>
