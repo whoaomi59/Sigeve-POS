@@ -7,6 +7,13 @@ function App() {
       <p className="text-gray-500 text-center">
         Sistema POS venta y inventario.
       </p>
+      <div className="flexx">
+        <img
+          src="/img/Baner/Baner 1.png"
+          alt="Baners"
+          className="w-150 h-120"
+        />
+      </div>
     </>
   );
 }
