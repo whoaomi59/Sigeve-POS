@@ -66,7 +66,7 @@ export default function Ventas() {
       <div className="grid grid-cols-3 gap-6">
         <div className="col-span-2">
           <input
-            className="p-2 w-full mb-4 border rounded shadow-sm"
+            className="p-2 w-full mb-4 border rounded border-gray-300"
             placeholder="Buscar producto..."
           />
 
