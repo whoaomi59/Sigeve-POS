@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { products } from "../../mock/productos";
+import * as Icons from "lucide-react";
 
 export default function Ventas() {
   const [tickets, setTickets] = useState([{ id: 1, items: [] }]);
@@ -112,16 +113,20 @@ export default function Ventas() {
             ) : (
               <ul className="text-sm text-gray-700 space-y-1">
                 {currentTicket.items.map((item, i) => (
-                  <li key={i} className="flex justify-between border-b pb-1">
+                  <li
+                    key={i}
+                    className="flex justify-between border-b pb-1 border-gray-300"
+                  >
                     <span>{item.name}</span>
                     <span>{item.price}</span>
+                    <Icons.Trash className="w-4 h-4 text-red-500 hover:text-gray-500" />
                   </li>
                 ))}
               </ul>
             )}
           </div>
 
-          <div className="mt-4 border-t pt-4">
+          <div className="mt-4 border-t pt-4 border-gray-300">
             <button className="flex justify-between text-white font-bold bg-blue-600 w-full p-4 rounded rounded-full">
               <span>Cobrar:</span>
               <span>{calculateTotal(currentTicket)}</span>
