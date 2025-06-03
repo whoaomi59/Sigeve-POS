@@ -7,24 +7,30 @@ export const RutasNavegacio = [
   },
   {
     id: 2,
+    name: "Caja",
+    icon: "Laptop",
+    path: "/caja",
+  },
+  {
+    id: 3,
     name: "Proveedores",
     icon: "BaggageClaim",
     path: "/proveedores",
   },
   {
-    id: 3,
+    id: 4,
     name: "Clientes",
     icon: "UserLock",
     path: "/clientes",
   },
   {
-    id: 4,
+    id: 5,
     name: "Categorias",
     icon: "ChartBarStacked",
     path: "/categorias",
   },
   {
-    id: 5,
+    id: 6,
     name: "Productos",
     icon: "PackageSearch",
     path: "/productos",
