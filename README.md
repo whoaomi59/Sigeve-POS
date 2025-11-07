@@ -20,9 +20,9 @@ Sigue estos pasos para configurar el proyecto localmente:
 
 5. **Genera la clave de la aplicación:**
 
-````bash
+```bash
   php artisan key:generate
-  ```
+```
 
 6. **Configura la base de datos en el archivo `.env`** con tus credenciales locales.
 
@@ -30,24 +30,26 @@ Sigue estos pasos para configurar el proyecto localmente:
 
 ```bash
   php artisan migrate:fresh --seed
-  ```
+```
 
 8. **Enlazar el almacenamiento para los archivos multimedia:**
 
 ```bash
   php artisan storage:link
-  ```
+```
 
 9. **Instalar las dependencias de JavaScript y CSS:**
 
 ```bash
   npm install && npm run dev
-  ```
+```
 
 10. **Iniciar el servidor de desarrollo de Laravel:**
 
 ```bash
   php artisan serve
-  ```
+```
 
-````
+```
+
+```
