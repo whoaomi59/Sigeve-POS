@@ -4,7 +4,15 @@ Sigue estos pasos para configurar el proyecto localmente:
 
 1. **Clona el repositorio:**
 
+```bash
+   https://github.com/whoaomi59/Sigeve-POS.git
+```
+
 2. **Accede a la carpeta del proyecto:**
+
+```bash
+   cd /Sigeve-POS
+```
 
 3. **Instala las dependencias de PHP:**
 
