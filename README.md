@@ -4,20 +4,20 @@ A robust Inventory Management System built with **Laravel 10**, **MySQL**, **Ine
 
 ## 🌟 Key Features
 
-- **Dashboard Insight**
-- **POS (Point of Sale)**
-- **Orders**
-    - Due Payments
-    - Settle due amount
-- **Transactions**
-- **Categories**
-- **Unit Types**
-- **Products**
-- **Customers**
-- **Employee**
-- **Salary**
-- **Expenses**
-- **Settings**
+-   **Dashboard Insight**
+-   **POS (Point of Sale)**
+-   **Orders**
+    -   Due Payments
+    -   Settle due amount
+-   **Transactions**
+-   **Categories**
+-   **Unit Types**
+-   **Products**
+-   **Customers**
+-   **Employee**
+-   **Salary**
+-   **Expenses**
+-   **Settings**
 
 ## 🚀 Quick Start
 
@@ -68,20 +68,3 @@ Follow these steps to set up the project locally:
     ```bash
     php artisan serve
     ```
-
-## 💡 Contributing
-
-Have ideas to improve the system? Feel free to:
-
-- Submit a **Pull Request (PR)**
-- Create an **Issue** for feature requests or bugs
-
-## 📄 License
-
-Licensed under the [MIT License](LICENSE).
-
----
-
-> Find me on [GitHub](https://github.com/mamun724682) &nbsp;&middot;&nbsp; [LinkedIn](https://www.linkedin.com/in/mamun724682)
-
----
