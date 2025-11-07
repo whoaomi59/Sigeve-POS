@@ -1,24 +1,3 @@
-# ✨ Inventory and Sales Management System (SPA)
-
-A robust Inventory Management System built with **Laravel 10**, **MySQL**, **Inertia.js** and **Vue js**, designed to streamline your inventory sales, and purchasing processes. It's a Single Page Application (SPA)
-
-## 🌟 Key Features
-
--   **Dashboard Insight**
--   **POS (Point of Sale)**
--   **Orders**
-    -   Due Payments
-    -   Settle due amount
--   **Transactions**
--   **Categories**
--   **Unit Types**
--   **Products**
--   **Customers**
--   **Employee**
--   **Salary**
--   **Expenses**
--   **Settings**
-
 ## 🚀 Quick Start
 
 Follow these steps to set up the project locally:
