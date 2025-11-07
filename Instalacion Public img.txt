@@ -1,0 +1,7 @@
+C!8@B7aMAnQWL
+
+cd C:\xampp\htdocs\Inventory-Management-System-Laravel-SPA
+
+rmdir public\storage
+
+cmd /c mklink /D "C:\xampp\htdocs\Sigeve-POS\public\storage" "C:\xampp\htdocs\Sigeve-POS\storage\app"
