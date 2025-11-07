@@ -1,4 +1,4 @@
-## 🚀 Inicio rápido
+## 🚀💻🏆 Inicio rápido
 
 Sigue estos pasos para configurar el proyecto localmente:
 
