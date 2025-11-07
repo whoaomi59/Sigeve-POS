@@ -8,9 +8,9 @@ Sigue estos pasos para configurar el proyecto localmente:
 
 3. **Instala las dependencias de PHP:**
 
-    ```bash
-     composer install
-    ```
+```bash
+    composer install
+```
 
 4. **Copia la configuración de `.env`:**
 
