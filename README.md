@@ -49,7 +49,3 @@ Sigue estos pasos para configurar el proyecto localmente:
 ```bash
   php artisan serve
 ```
-
-```
-
-```
