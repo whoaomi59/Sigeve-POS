@@ -1,49 +1,65 @@
-## 🚀 Quick Start
+## 🚀 Inicio rápido
 
-Follow these steps to set up the project locally:
+Sigue estos pasos para configurar el proyecto localmente:
 
-1. **Clone the repository:**
-2. **Navigate to the project folder:**
-3. **Install PHP dependencies:**
+1. **Clona el repositorio:**
 
-    ```bash
-    composer install
-    ```
+2. **Accede a la carpeta del proyecto:**
 
-4. **Copy `.env` configuration:**
+3. **Instala las dependencias de PHP:**
 
-    ```bash
-    cp .env.example .env
-    ```
+``bash
 
-5. **Generate application key:**
+composer install
 
-    ```bash
-    php artisan key:generate
-    ```
+```
 
-6. **Configure the database in the `.env` file** with your local credentials.
+4. **Copia la configuración de `.env`:**
 
-7. **Run database migrations and seed sample data:**
+``bash
 
-    ```bash
-    php artisan migrate:fresh --seed
-    ```
+cp .env.example .env
 
-8. **Link storage for media files:**
+```
 
-    ```bash
-    php artisan storage:link
-    ```
+5. **Genera la clave de la aplicación:**
 
-9. **Install JavaScript and CSS dependencies:**
+``bash
 
-    ```bash
-    npm install && npm run dev
-    ```
+php artisan key:generate
 
-10. **Start the Laravel development server:**
+```
 
-    ```bash
-    php artisan serve
-    ```
+6. **Configura la base de datos en el archivo `.env`** con tus credenciales locales.
+
+7. **Ejecutar las migraciones de la base de datos e inicializar los datos de ejemplo:**
+
+``bash
+
+php artisan migrate:fresh --seed
+
+```
+
+8. **Enlazar el almacenamiento para los archivos multimedia:**
+
+```bash
+
+php artisan storage:link
+
+```
+
+9. **Instalar las dependencias de JavaScript y CSS:**
+
+```bash
+
+npm install && npm run dev
+
+```
+
+10. **Iniciar el servidor de desarrollo de Laravel:**
+
+```bash
+
+php artisan serve
+
+```
