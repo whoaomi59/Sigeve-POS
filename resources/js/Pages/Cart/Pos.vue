@@ -124,13 +124,17 @@ const decrementCartQuantity = (cart) => {
 };
 
 const insertCartQuantity = (cart, quantity) => {
-    if (cart.quantity == quantity) {
+    // Convertir a número eliminando símbolos, comas o puntos de moneda
+    const cleanQuantity = parseInt(String(quantity).replace(/[^\d]/g, ""), 10);
+
+    if (cart.quantity === cleanQuantity) {
         return;
     }
+
     router.put(
         route("carts.update", cart.id),
         {
-            quantity: quantity,
+            quantity: cleanQuantity,
         },
         {
             preserveScroll: true,
@@ -170,11 +174,66 @@ const createOrder = () => {
         },
     });
 };
+
+// 🔹 ESCANER DE CÓDIGO DE BARRAS AUTOMÁTICO
+import { onMounted, onBeforeUnmount } from "vue";
+
+let buffer = "";
+let timeout = null;
+
+onMounted(() => {
+    window.addEventListener("keypress", handleScannerInput);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener("keypress", handleScannerInput);
+});
+
+function handleScannerInput(e) {
+    // Solo letras o números
+    if (/^[a-zA-Z0-9]$/.test(e.key)) {
+        buffer += e.key;
+        clearTimeout(timeout);
+
+        // Si pasan 150ms sin una nueva tecla, se asume que terminó de escanear
+        timeout = setTimeout(() => {
+            const code = buffer.trim();
+            buffer = "";
+
+            if (code.length > 2) {
+                findAndAddProduct(code);
+            }
+        }, 150);
+    }
+}
+
+// 🔹 Buscar producto y agregarlo
+function findAndAddProduct(code) {
+    // Busca en props.products (que vienen del backend)
+    const product = props.products.data.find(
+        (p) => String(p.product_code) === code || String(p.barcode) === code
+    );
+
+    if (product) {
+        addToCart(product);
+    } else {
+        showToast(`Producto con código ${code} no encontrado`, "error");
+    }
+}
+
+function formatCOP(value) {
+    if (value == null || isNaN(value)) return "$0";
+    return new Intl.NumberFormat("es-CO", {
+        style: "currency",
+        currency: "COP",
+        minimumFractionDigits: 0,
+    }).format(value);
+}
 </script>
 <template>
     <Head title="Product" />
     <AuthenticatedLayout>
-        <template #breadcrumb> Vender </template>
+        <template #breadcrumb> Sistema de ventas SIGEVE-POS </template>
         <div class="flex flex-wrap">
             <div class="w-full px-4">
                 <div
@@ -193,18 +252,10 @@ const createOrder = () => {
                                     <div class="font-bold text-xl">
                                         Productos
                                     </div>
-                                    <!--                                    <span class="text-xs">Location ID#SIMON123</span>-->
+                                    <span class="text-xs"
+                                        >Ubicación ID#Pitalito-Huila</span
+                                    >
                                 </div>
-                                <!--                                <div class="flex items-center">-->
-                                <!--                                    <div class="text-sm text-center mr-4">-->
-                                <!--                                        <div class="font-light text-gray-500">last synced</div>-->
-                                <!--                                        <span class="font-semibold">3 mins ago</span>-->
-                                <!--                                    </div>-->
-                                <!--                                    <div>-->
-                                <!--                                        <span-->
-                                <!--                                            class="px-4 py-2 bg-gray-200 text-gray-800 font-semibold rounded">Help</span>-->
-                                <!--                                    </div>-->
-                                <!--                                </div>-->
                             </div>
                             <!-- end header -->
 
@@ -252,6 +303,16 @@ const createOrder = () => {
                                             {{ getCurrency()
                                             }}{{ product.selling_price }}
                                         </p>
+                                    </div>
+                                    <div
+                                        class="text-xs font-semibold inline-block py-1 px-2 rounded text-emerald-600 bg-emerald-200"
+                                    >
+                                        {{
+                                            truncateString(
+                                                product.product_code,
+                                                20
+                                            )
+                                        }}
                                     </div>
                                 </div>
                             </div>
@@ -339,6 +400,7 @@ const createOrder = () => {
                                             class="font-semibold border-gray-300 px-0.5 py-1 w-10 text-center"
                                             :value="cart.quantity"
                                         />
+
                                         <span
                                             @click="incrementCartQuantity(cart)"
                                             role="button"
@@ -347,11 +409,10 @@ const createOrder = () => {
                                         >
                                     </div>
                                     <div
-                                        class="font-semibold text-lg w-16 text-center"
+                                        class="font-semibold text-lg w-20 text-center"
                                     >
-                                        {{ getCurrency()
-                                        }}{{
-                                            numberFormat(
+                                        {{
+                                            formatCOP(
                                                 cart.quantity *
                                                     cart.product.selling_price
                                             )
@@ -372,36 +433,37 @@ const createOrder = () => {
                                         <span class="font-semibold text-sm"
                                             >Subtotal</span
                                         >
-                                        <span class="font-bold"
-                                            >{{ getCurrency()
-                                            }}{{ cartSubtotal }}</span
+                                        <span class="font-bold">
+                                            {{ formatCOP(cartSubtotal) }}</span
                                         >
                                     </div>
                                     <div class="px-4 flex justify-between">
                                         <span class="font-semibold text-sm"
                                             >Sales Tax({{ tax }}%)</span
                                         >
-                                        <span class="font-bold"
-                                            >{{ getCurrency()
-                                            }}{{ totalTax }}</span
+                                        <span class="font-bold">
+                                            {{ formatCOP(totalTax) }}</span
                                         >
                                     </div>
                                     <div class="px-4 flex justify-between">
                                         <span
                                             v-if="discountType === 'fixed'"
                                             class="font-semibold text-sm"
-                                            >Discount({{ getCurrency()
-                                            }}{{ discount }})</span
-                                        >
+                                            >Discount(
+                                            {{ formatCOP(discount) }})
+                                        </span>
                                         <span
                                             v-else
                                             class="font-semibold text-sm"
-                                            >Discount({{ discount }}%)</span
+                                            >Discount({{
+                                                formatCOP(discount)
+                                            }}%)</span
                                         >
                                         <span class="font-bold"
-                                            >- {{ getCurrency()
-                                            }}{{ totalDiscount }}</span
-                                        >
+                                            >-
+
+                                            {{ formatCOP(totalDiscount) }}
+                                        </span>
                                     </div>
                                     <div
                                         class="px-4 flex justify-between items-center"
@@ -467,10 +529,9 @@ const createOrder = () => {
                                         <span class="font-semibold text-2xl"
                                             >Total</span
                                         >
-                                        <span class="font-bold text-2xl"
-                                            >{{ getCurrency()
-                                            }}{{ form.total }}</span
-                                        >
+                                        <span class="font-bold text-2xl">
+                                            {{ formatCOP(form.total) }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
