@@ -1,8 +1,8 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
-import AuthLayout from '@/Layouts/AuthLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import {Head, Link, useForm} from '@inertiajs/vue3';
+import Checkbox from "@/Components/Checkbox.vue";
+import AuthLayout from "@/Layouts/AuthLayout.vue";
+import InputError from "@/Components/InputError.vue";
+import { Head, Link, useForm } from "@inertiajs/vue3";
 import SubmitButton from "@/Components/SubmitButton.vue";
 
 defineProps({
@@ -21,21 +21,21 @@ defineProps({
 });
 
 const form = useForm({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
 });
 
 const submit = () => {
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
+    form.post(route("login"), {
+        onFinish: () => form.reset("password"),
     });
 };
 </script>
 
 <template>
     <AuthLayout>
-        <Head :title="pageTitle"/>
+        <Head :title="pageTitle" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -50,10 +50,10 @@ const submit = () => {
                         <div class="rounded-t mb-0 px-6 py-6">
                             <div class="text-center mb-3">
                                 <h6 class="text-blueGray-500 text-sm font-bold">
-                                    Sign in with credentials
+                                    Inicia sesión con tus credenciales
                                 </h6>
                             </div>
-                            <hr class="mt-6 border-b-1 border-blueGray-300"/>
+                            <hr class="mt-6 border-b-1 border-blueGray-300" />
                         </div>
                         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
                             <form @submit.prevent="submit">
@@ -62,7 +62,7 @@ const submit = () => {
                                         class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         for="email"
                                     >
-                                        Email
+                                        Correo electrónico
                                     </label>
                                     <input
                                         id="email"
@@ -73,7 +73,7 @@ const submit = () => {
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Email"
                                     />
-                                    <InputError :message="form.errors.email"/>
+                                    <InputError :message="form.errors.email" />
                                 </div>
 
                                 <div class="relative w-full mb-3">
@@ -81,7 +81,7 @@ const submit = () => {
                                         class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         for="password"
                                     >
-                                        Password
+                                        Contraseña
                                     </label>
                                     <input
                                         id="password"
@@ -92,17 +92,23 @@ const submit = () => {
                                         required
                                         autocomplete="current-password"
                                     />
-                                    <InputError :message="form.errors.password"/>
+                                    <InputError
+                                        :message="form.errors.password"
+                                    />
                                 </div>
                                 <div>
-                                    <label class="inline-flex items-center cursor-pointer">
+                                    <label
+                                        class="inline-flex items-center cursor-pointer"
+                                    >
                                         <Checkbox
                                             name="remember"
                                             v-model:checked="form.remember"
                                             class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                                         />
-                                        <span class="ml-2 text-sm font-semibold text-blueGray-600">
-                                            Remember me
+                                        <span
+                                            class="ml-2 text-sm font-semibold text-blueGray-600"
+                                        >
+                                            Acuérdate de mí
                                         </span>
                                     </label>
                                 </div>
@@ -112,7 +118,7 @@ const submit = () => {
                                         class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                         :processing="form.processing"
                                     >
-                                        Sign In
+                                        Iniciar sesión
                                     </SubmitButton>
                                 </div>
                             </form>
@@ -125,7 +131,7 @@ const submit = () => {
                                 :href="route('password.request')"
                                 class="text-blueGray-200"
                             >
-                                <small>Forgot password?</small>
+                                <small>¿Has olvidado tu contraseña?</small>
                             </Link>
                         </div>
                         <div class="w-1/2 text-right">
@@ -134,7 +140,7 @@ const submit = () => {
                                 :href="route('register')"
                                 class="text-blueGray-200"
                             >
-                                <small>Create new account</small>
+                                <small>Crear cuenta nueva</small>
                             </Link>
                         </div>
                     </div>
