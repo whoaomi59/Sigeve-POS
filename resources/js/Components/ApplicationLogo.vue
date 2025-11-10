@@ -1,9 +1,9 @@
 <template>
     <div class="flex justify-items-center justify-center">
-        <img :src="Logo" alt="Sigeve-POS" class="w-50 h-16" />
+        <img :src="Logo" alt="Sigeve-POS" class="h-20" />
     </div>
 </template>
 
 <script setup>
-import Logo from "@/assets/img/logo 1.png";
+import Logo from "@/assets/img/logo-sigeve-pos.png";
 </script>

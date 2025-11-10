@@ -29,7 +29,7 @@
                             class="absolute flex items-center justify-center rounded-full cursor-pointer"
                         >
                             <i
-                                class="fas fa-camera text-[#163143] text-2xl"
+                                class="fas fa-camera text-[#10B981] text-2xl"
                             ></i>
                         </div>
                         <input
